@@ -1,0 +1,6 @@
+ID,Title,Description,Category,Likelihood (1-5),Impact (1-5),Score (LxI),Priority,Owner,Mitigation,Status,DateIdentified,Notes
+1,Payment gateway outage,Third-party payment provider downtime,Third-party,4,5,20,Critical,Ops Lead,"Add retry logic, alternate gateway",Open,2026-01-31,Simulated
+2,Inventory sync failure,Delayed stock updates lead to oversell,System,3,4,12,High,Dev Lead,"Add validation, alerts",Open,2026-01-31,
+3,Credit card fraud,Increased chargebacks,Security,3,5,15,High,Security Lead,"Add monitoring, 3DS",Open,2026-01-31,
+4,Shipping delays,Carrier delays during peak season,Supplier,2,4,8,Medium,Logistics Lead,"Add buffer qty and stronger SLAs",Open,2026-01-31,
+5,Regulatory change,New tax rule impacts checkout,Compliance,2,5,10,Medium,Legal,"Monitor regulation and update checkout",Open,2026-01-31,
