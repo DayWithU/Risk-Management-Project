@@ -1,0 +1,5 @@
+ID,Type,Title,Description,Owner,Impact (1-5),Likelihood (1-5),Score,Priority,Mitigation/Action,Status,DateIdentified,DueDate,Notes
+R-001,Risk,Payment gateway outage,Third-party payment provider downtime,Ops Lead,5,4,20,Critical,Add retry logic and alternate gateway,Open,2026-01-31,2026-02-10,"Simulated example"
+A-001,Assumption,Stable API responses,Assume payment API maintains response format,Dev Lead,,,,,Validate during testing,Open,2026-01-31,2026-02-05,"Verify in staging"
+I-001,Issue,Inventory sync lag,Stock counts not updating promptly,Dev Lead,3,4,12,High,Investigate queue,Open,2026-01-31,2026-02-03,"Observed in staging"
+D-001,Decision,Use Google Forms for intake,Decided to use Google Forms for initial intake,Project Sponsor,,,,,Document process,Closed,2026-01-31,2026-01-31,"Sponsor approved"
