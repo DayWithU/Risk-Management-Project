@@ -1,0 +1,4 @@
+Task/Deliverable,Description,Responsible (R),Accountable (A),Consulted (C),Informed (I),Due Date,Status,Notes
+Risk Register creation,Run workshop and populate initial register,You (Project Lead),Project Sponsor,Dev Lead;Ops Lead,All stakeholders,2026-02-01,Planned,"Day 1-3"
+Dashboard prototype,Build heatmap & top risks card,You (Project Lead);Dev Lead,You (Project Lead),Ops Lead;Security Lead,Project Sponsor,2026-02-10,Planned,"Week 2"
+Tabletop exercise,Run scenario for payment outage,You (Project Lead),Project Sponsor,Ops Lead;Dev Lead,All stakeholders,2026-02-18,Planned,"Week 3"
