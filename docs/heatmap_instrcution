@@ -1,0 +1,72 @@
+# Day 4 — Heatmap instructions (Google Sheets or Excel)
+
+Goal
+Create a 5×5 Likelihood (Y) × Impact (X) heatmap that shows where your risks sit and export it as dashboards/heatmap.png.
+
+Inputs
+- artifacts/risk-register.csv (your risk register)
+- Tool choice: Google Sheets (recommended, quick) or Microsoft Excel
+
+A. Prepare data (common steps)
+1. Open artifacts/risk-register.csv in Google Sheets or Excel.
+2. Ensure columns exist: ID, Title, Likelihood (1-5), Impact (1-5), Score (LxI), Priority.
+3. If Score is missing, add a formula: Score = Likelihood * Impact.
+   - Sheets/Excel formula (assume Likelihood in column E and Impact in F): `=E2*F2` and fill down.
+
+B. Option 1 — Google Sheets (fast)
+1. Create a 5×5 grid:
+   - New sheet tab → label it "Heatmap".
+   - Top row (B1:F1) = Impact values 1,2,3,4,5.
+   - Left column (A2:A6) = Likelihood values 5,4,3,2,1 (put highest likelihood at top for readability).
+2. Fill grid with counts:
+   - In cell B2 (Likelihood=5, Impact=1) enter a COUNTIFS formula counting rows where Likelihood=5 and Impact=1:
+     `=COUNTIFS('Sheet1'!$E:$E, $A2, 'Sheet1'!$F:$F, B$1)`
+     - Replace 'Sheet1' with the name of the sheet containing your register.
+   - Drag across B2:F2 and then down to fill the 5×5 grid.
+3. Apply conditional formatting:
+   - Select the 5×5 grid → Format → Conditional formatting.
+   - Use a colour scale (min = white/light, max = red/dark) so high-count cells stand out.
+4. Add labels and small legend:
+   - Add a title like "Risk Heatmap — Likelihood (Y) × Impact (X)".
+   - Optionally add a card showing total Critical/High counts using COUNTIF on Priority.
+5. Export image:
+   - Select the area (title + heatmap grid + legend).
+   - File → Download → PNG image (.png) OR use a screenshot tool to capture.
+   - Save as dashboards/heatmap.png.
+
+C. Option 2 — Microsoft Excel (offline)
+1. Make the 5×5 grid same as above (Impact across top, Likelihood down left).
+2. Use COUNTIFS to populate counts for each grid cell (same formula idea).
+3. Use Conditional Formatting → Color Scales to color the 5×5 range.
+4. Add title and legend.
+5. Export:
+   - Select the heatmap area → Copy as Picture (Home → Copy → Copy as Picture) and paste into Paint/Photoshop and Save as PNG,
+   - OR use File → Save As → PDF then convert, OR take a screenshot and save to dashboards/heatmap.png.
+
+D. Save and commit
+1. Save dashboards/heatmap.png into your local repo folder `dashboards/` (create if not present).
+2. Add a short file `docs/heatmap_notes.md` or update README with a 1-sentence description:
+   - "dashboards/heatmap.png — Likelihood × Impact heatmap exported from Google Sheets (Day 4)."
+
+E. Helpful formulas quick reference
+- Score: `=E2 * F2`
+- Count cells (example for Likelihood in E column and Impact in F column):
+  `=COUNTIFS($E:$E, <LikelihoodValue>, $F:$F, <ImpactValue>)`
+- Count Critical risks: `=COUNTIF($G:$G, "Critical")` (replace G with your Priority column)
+
+Tips & small checks
+- Verify Likelihood and Impact values are numeric 1–5; text values break COUNTIFS.
+- Put Likelihood descending (5→1) on Y so the heatmap visually matches standard risk maps (top-right = worst).
+- Even if many cells are zero, the heatmap immediately shows concentration of risk.
+
+Example deliverables to commit today
+- dashboards/heatmap.png (the exported image)
+- docs/heatmap_instructions.md (this file)
+- (optional) docs/heatmap_notes.md with 1-line context
+
+Time estimate
+- 30 minutes: import CSV, build 5×5 grid, add conditional formatting, export PNG, commit.
+
+What to include in your commit message
+- Branch: day4-heatmap
+- Commit message: "Day 4: Create Likelihood×Impact heatmap and add export to dashboards/heatmap.png"
