@@ -16,3 +16,5 @@ How to view
 - I will update this README each week with links to executive slides and the dashboard.
 
 Owner: DayWithU
+
+I'm looking track a bit, but i'm a man of my words, has to be consistent
