@@ -1,0 +1,56 @@
+# PoC: Payment gateway failover — Runbook & Test Plan (Day 9)
+
+Objective
+Prove the ability to fail over from Primary Payment Gateway A to Secondary Payment Gateway B with minimal customer impact. This PoC is intentionally manual / low‑risk for demonstration.
+
+Scope
+- Simulate a controlled failover in a staging environment (do NOT run on production).
+- Verify cutover steps, communication, and rollback.
+- Measure pre/post failure payment success rate and time-to-failover.
+
+Roles
+- Project Lead: You (coordinate, runbook owner)
+- Dev/Integration: Dev Lead (implement routing change)
+- Ops: Ops Lead (execute switch, monitor)
+- Support: Support Lead (customer comms & playbook)
+- QA: QA Lead (run test transactions and validate results)
+
+Prerequisites (staging)
+- Staging accounts configured for Gateway A (Primary) and Gateway B (Secondary).
+- Test cards and test merchant account credentials for both gateways.
+- Access to deploy or toggle routing (feature flag, config, or DNS/routing).
+- Monitoring dashboard access (payment success/fail rate, error logs).
+- Communication channel (Slack/Teams) for the exercise.
+
+PoC steps (manual)
+1. Preparation (30–60 min before test)
+   - Notify participants and set time window.
+   - Ensure rollback plan prepared and contacts available.
+   - Create baseline metrics (capture payment success/failure rate for last 5–10 minutes).
+
+2. Execute test transactions (Pre-failover)
+   - QA runs 10 test transactions via Primary Gateway A; record success/failure.
+   - Record timestamps and error messages (if any).
+
+3. Trigger failover (Ops + Dev)
+   - Toggle routing to send traffic to Gateway B (via config toggle or routing change).
+   - Record time of trigger (T0).
+
+4. Execute test transactions (During failover)
+   - QA runs the same 10 test transactions; record success/failure.
+   - Ops monitors errors, latency, and payment acceptance.
+
+5. Validate
+   - Compare pre/post success rate. Check logs for exceptions.
+   - Confirm Support can see transactions and customer experience is acceptable.
+
+6. Rollback (if needed)
+   - If Gateway B fails acceptance criteria, rollback to Gateway A using documented steps.
+   - Record rollback time and reason.
+
+7. Closeout
+   - Document results (pass/fail), duration of failover, any issues, remediation actions.
+   - Update artifacts/risk-register.csv: add note "PoC complete — results: PASS/FAIL" and update Residual Score estimate if mitigations are effective.
+   - Create follow-up tasks for production implementation if PoC passes.
+
+Success criteria (
