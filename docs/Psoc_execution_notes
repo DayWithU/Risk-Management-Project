@@ -1,0 +1,26 @@
+# PoC Execution Notes — What to capture during the Payment Failover PoC
+
+Purpose
+This guide lists the exact items to capture during PoC execution so results are clear, reproducible and easy to present.
+
+Before the PoC (preparation)
+- Confirm test window and notify participants.
+- Ensure staging credentials for Gateway A and Gateway B are valid.
+- Prepare test cards and note card numbers (test-provider numbers).
+- Open the monitoring dashboard and record baseline metrics (payment success rate, latency, error rate). Screenshot baseline.
+- Open a shared results sheet/file (templates/poc_results.csv) to record test rows in real time.
+
+During the PoC (record step-by-step)
+- Record timestamps for each major event (T0 = start, T1 = failover trigger, T2 = end, rollback time if performed).
+- For each test phase (Pre-failover, During-failover, Post-failover, Rollback) record:
+  - Number of transactions attempted
+  - Number of successful transactions
+  - Success rate (%) = success / attempted
+  - Error examples (copy full error text or screenshot)
+  - Representative transaction IDs (anonymize if needed)
+  - Observations (latency, 5xx errors, unexpected behavior)
+- Take screenshots of monitoring charts showing payment success/failure before, during and after.
+- If rollback happens, record reason and timing, and any side-effects seen.
+
+After the PoC (closeout)
+- Fill all
